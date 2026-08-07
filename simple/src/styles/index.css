@@ -1,0 +1,59 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-brand-50: oklch(97% 0.014 254);
+  --color-brand-100: oklch(93% 0.032 254);
+  --color-brand-500: oklch(62% 0.2 255);
+  --color-brand-600: oklch(54% 0.22 255);
+  --color-brand-700: oklch(47% 0.2 255);
+
+  --font-sans: 'Vazirmatn', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+@utility code-block {
+  direction: ltr;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+}
+
+html {
+  color-scheme: light dark;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  html {
+    min-width: 320px;
+    min-height: 100%;
+    background: var(--color-slate-50);
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+    background:
+      radial-gradient(circle at top, rgb(219 234 254 / 40%), transparent 32rem),
+      var(--color-slate-50);
+    color: var(--color-slate-950);
+  }
+
+  button,
+  textarea {
+    font: inherit;
+  }
+
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--color-brand-100);
+    color: var(--color-brand-700);
+  }
+}

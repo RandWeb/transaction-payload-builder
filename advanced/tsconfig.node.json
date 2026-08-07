@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "exactOptionalPropertyTypes": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@/app/*": ["src/app/*"],
+      "@/features/*": ["src/features/*"],
+      "@/shared/*": ["src/shared/*"],
+      "@/stores/*": ["src/stores/*"],
+      "@/config/*": ["src/config/*"]
+    }
+  },
+  "include": ["vite.config.ts", "vitest.config.ts", "tailwind.config.ts"]
+}

@@ -1,0 +1,107 @@
+/**
+ * هدف فایل: استایل‌های پایه، فونت Self-hosted و توکن‌های Design System.
+ * جایگاه معماری: ورودی سراسری CSS برای کل اپلیکیشن.
+ */
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 375px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 1920px;
+  --color-primary: rgb(var(--color-primary-rgb));
+  --color-secondary: rgb(var(--color-secondary-rgb));
+  --color-success: rgb(var(--color-success-rgb));
+  --color-warning: rgb(var(--color-warning-rgb));
+  --color-error: rgb(var(--color-error-rgb));
+  --color-bg: rgb(var(--color-bg-rgb));
+  --color-text: rgb(var(--color-text-rgb));
+  --color-surface: rgb(var(--color-surface-rgb));
+  --color-border: rgb(var(--color-border-rgb));
+  --color-muted: rgb(var(--color-muted-rgb));
+  --font-sans: Vazirmatn, Tahoma, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: Vazirmatn;
+  src: url('./assets/fonts/Vazirmatn-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazirmatn;
+  src: url('./assets/fonts/Vazirmatn-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazirmatn;
+  src: url('./assets/fonts/Vazirmatn-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  --color-primary-rgb: 37 99 235;
+  --color-secondary-rgb: 100 116 139;
+  --color-success-rgb: 22 163 74;
+  --color-warning-rgb: 245 158 11;
+  --color-error-rgb: 220 38 38;
+  --color-bg-rgb: 248 250 252;
+  --color-text-rgb: 15 23 42;
+  --color-surface-rgb: 255 255 255;
+  --color-border-rgb: 226 232 240;
+  --color-muted-rgb: 241 245 249;
+  --color-bg-success-subtle: 220 252 231;
+  --color-bg-warning-subtle: 254 243 199;
+  --color-bg-danger-subtle: 254 226 226;
+  --color-bg-info-subtle: 219 234 254;
+  --radius: 0.75rem;
+  --shadow-card: 0 16px 40px rgb(15 23 42 / 0.08);
+}
+
+.dark {
+  color-scheme: dark;
+  --color-primary-rgb: 96 165 250;
+  --color-secondary-rgb: 148 163 184;
+  --color-success-rgb: 74 222 128;
+  --color-warning-rgb: 251 191 36;
+  --color-error-rgb: 248 113 113;
+  --color-bg-rgb: 2 6 23;
+  --color-text-rgb: 248 250 252;
+  --color-surface-rgb: 15 23 42;
+  --color-border-rgb: 51 65 85;
+  --color-muted-rgb: 30 41 59;
+  --color-bg-success-subtle: 20 83 45;
+  --color-bg-warning-subtle: 113 63 18;
+  --color-bg-danger-subtle: 127 29 29;
+  --color-bg-info-subtle: 30 64 175;
+  --shadow-card: 0 16px 40px rgb(0 0 0 / 0.28);
+}
+
+html {
+  direction: rtl;
+  font-family: Vazirmatn, Tahoma, Arial, sans-serif;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+* {
+  box-sizing: border-box;
+}

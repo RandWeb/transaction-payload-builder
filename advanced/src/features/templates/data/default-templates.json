@@ -1,0 +1,72 @@
+[
+  {
+    "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "name": "تراکنش کارت‌به‌کارت عادی",
+    "description": "سناریوی پایه برای ارسال عادی با مبلغ متوسط و داده کامل.",
+    "transaction": {
+      "mainTransaction": {
+        "fraudMessageId": "TPL-NORMAL-001",
+        "sysName": "CORE",
+        "businessId": "PASSARGAD",
+        "attrsList": [
+          {
+            "AccountId": "1000000000000001",
+            "TransactionAmount": "1500000",
+            "TransactionDate": "2026-08-04T10:30:00.000Z",
+            "TrxType": "CARD_TO_CARD",
+            "DestinationCardNumber": "6037999900001234",
+            "SourceCardNumber": "6037999900005678"
+          }
+        ]
+      }
+    },
+    "createdAt": "2026-08-04T00:00:00.000Z",
+    "updatedAt": "2026-08-04T00:00:00.000Z"
+  },
+  {
+    "id": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "name": "تراکنش با مبلغ بالا",
+    "description": "سناریوی Fraud برای بررسی رفتار سرویس در مبلغ غیرمعمول.",
+    "transaction": {
+      "mainTransaction": {
+        "fraudMessageId": "TPL-HIGH-AMOUNT-001",
+        "sysName": "CORE",
+        "businessId": "PASSARGAD",
+        "attrsList": [
+          {
+            "AccountId": "1000000000000002",
+            "TransactionAmount": "950000000",
+            "TransactionDate": "2026-08-04T11:45:00.000Z",
+            "TrxType": "CARD_TO_CARD",
+            "DestinationCardNumber": "6037999900009999",
+            "SourceCardNumber": "6037999900001111",
+            "RiskLevel": "HIGH"
+          }
+        ]
+      }
+    },
+    "createdAt": "2026-08-04T00:00:00.000Z",
+    "updatedAt": "2026-08-04T00:00:00.000Z"
+  },
+  {
+    "id": "cccccccc-cccc-4ccc-8ccc-cccccccccccc",
+    "name": "تراکنش حداقلی",
+    "description": "سناریوی حداقلی برای تست فیلدهای الزامی ورودی.",
+    "transaction": {
+      "mainTransaction": {
+        "fraudMessageId": "TPL-MINIMAL-001",
+        "sysName": "CORE",
+        "businessId": "PASSARGAD",
+        "attrsList": [
+          {
+            "AccountId": "1000000000000003",
+            "TransactionAmount": "1000",
+            "TransactionDate": "2026-08-04T12:00:00.000Z"
+          }
+        ]
+      }
+    },
+    "createdAt": "2026-08-04T00:00:00.000Z",
+    "updatedAt": "2026-08-04T00:00:00.000Z"
+  }
+]
