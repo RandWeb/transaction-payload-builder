@@ -1,15 +1,94 @@
-@import 'tailwindcss';
+﻿@import "tailwindcss";
 
+/* ── Vazirmatn & JetBrains Mono ── */
 @theme {
-  --color-brand-50: oklch(97% 0.014 254);
-  --color-brand-100: oklch(93% 0.032 254);
-  --color-brand-500: oklch(62% 0.2 255);
-  --color-brand-600: oklch(54% 0.22 255);
-  --color-brand-700: oklch(47% 0.2 255);
+  --font-sans: "Vazirmatn", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
 
-  --font-sans: 'Vazirmatn', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  /* ── Calming Apple-inspired palette mapped to Tailwind ── */
+  --color-surface: var(--color-surface-raw);
+  --color-surface-card: var(--color-surface-card-raw);
+  --color-surface-input: var(--color-surface-input-raw);
+  --color-surface-hover: var(--color-surface-hover-raw);
+  --color-text-primary: var(--color-text-primary-raw);
+  --color-text-secondary: var(--color-text-secondary-raw);
+  --color-text-muted: var(--color-text-muted-raw);
+  --color-border-subtle: var(--color-border-subtle-raw);
+  --color-border-card: var(--color-border-card-raw);
+  --color-accent: var(--color-accent-raw);
+  --color-accent-soft: var(--color-accent-soft-raw);
+  --color-accent-hover: var(--color-accent-hover-raw);
+  --color-success: var(--color-success-raw);
+  --color-success-soft: var(--color-success-soft-raw);
+  --color-warning: var(--color-warning-raw);
+  --color-warning-soft: var(--color-warning-soft-raw);
+  --color-error: var(--color-error-raw);
+  --color-error-soft: var(--color-error-soft-raw);
+  --color-code-bg: var(--color-code-bg-raw);
+  --color-code-fg: var(--color-code-fg-raw);
 }
+
+/* ── Make dark: variant respond to data-theme ── */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ── Light theme ── */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --color-surface-raw: #f8fafc;
+  --color-surface-card-raw: #ffffff;
+  --color-surface-input-raw: #f1f5f9;
+  --color-surface-hover-raw: #eef2ff;
+  --color-text-primary-raw: #0f172a;
+  --color-text-secondary-raw: #475569;
+  --color-text-muted-raw: #94a3b8;
+  --color-border-subtle-raw: #e2e8f0;
+  --color-border-card-raw: #e2e8f0;
+  --color-accent-raw: #6366f1;
+  --color-accent-soft-raw: #eef2ff;
+  --color-accent-hover-raw: #4f46e5;
+  --color-success-raw: #10b981;
+  --color-success-soft-raw: #ecfdf5;
+  --color-warning-raw: #f59e0b;
+  --color-warning-soft-raw: #fffbeb;
+  --color-error-raw: #ef4444;
+  --color-error-soft-raw: #fef2f2;
+  --color-code-bg-raw: #1e293b;
+  --color-code-fg-raw: #a7f3d0;
+  --shadow-card: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-glow: 0 0 24px rgba(99,102,241,.18);
+  --gradient-root: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99,102,241,.06) 0%, transparent 60%);
+}
+
+/* ── Dark theme ── */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-surface-raw: #0b1120;
+  --color-surface-card-raw: #1e293b;
+  --color-surface-input-raw: #1e293b;
+  --color-surface-hover-raw: #1e293b;
+  --color-text-primary-raw: #f1f5f9;
+  --color-text-secondary-raw: #94a3b8;
+  --color-text-muted-raw: #64748b;
+  --color-border-subtle-raw: #1e293b;
+  --color-border-card-raw: #334155;
+  --color-accent-raw: #818cf8;
+  --color-accent-soft-raw: rgba(129,140,248,.1);
+  --color-accent-hover-raw: #6366f1;
+  --color-success-raw: #34d399;
+  --color-success-soft-raw: rgba(52,211,153,.1);
+  --color-warning-raw: #fbbf24;
+  --color-warning-soft-raw: rgba(251,191,36,.1);
+  --color-error-raw: #f87171;
+  --color-error-soft-raw: rgba(248,113,113,.1);
+  --color-code-bg-raw: #0f172a;
+  --color-code-fg-raw: #6ee7b7;
+  --shadow-card: 0 1px 3px rgba(0,0,0,.3), 0 1px 2px rgba(0,0,0,.2);
+  --shadow-glow: 0 0 32px rgba(129,140,248,.12);
+  --gradient-root: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(129,140,248,.08) 0%, transparent 60%);
+}
+
+/* ── Utilities ── */
 @utility code-block {
   direction: ltr;
   text-align: left;
@@ -17,30 +96,23 @@
   font-variant-ligatures: none;
 }
 
-html {
-  color-scheme: light dark;
-}
-
+/* ── Base styles ── */
 @layer base {
-  :root {
-    color-scheme: light;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-  }
-
   html {
     min-width: 320px;
     min-height: 100%;
-    background: var(--color-slate-50);
+    background: var(--color-surface-raw);
   }
 
   body {
     min-height: 100vh;
     margin: 0;
-    background:
-      radial-gradient(circle at top, rgb(219 234 254 / 40%), transparent 32rem),
-      var(--color-slate-50);
-    color: var(--color-slate-950);
+    background: var(--gradient-root), var(--color-surface-raw);
+    color: var(--color-text-primary-raw);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   button,
@@ -53,7 +125,7 @@ html {
   }
 
   ::selection {
-    background: var(--color-brand-100);
-    color: var(--color-brand-700);
+    background: var(--color-accent-soft-raw);
+    color: var(--color-accent-raw);
   }
 }

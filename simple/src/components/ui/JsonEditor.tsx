@@ -1,4 +1,4 @@
-﻿import { type ChangeEvent } from 'react';
+﻿import { type ChangeEvent } from "react";
 
 export interface JsonEditorProps {
   label: string;
@@ -18,10 +18,18 @@ export function JsonEditor({ label, value, onChange, error, placeholder, id }: J
   return (
     <div className="flex w-full flex-col gap-2">
       <div className="flex items-center justify-between px-1">
-        <label htmlFor={id} className="text-sm font-bold text-gray-700 dark:text-gray-200">
+        <label
+          htmlFor={id}
+          className="text-sm font-bold"
+          style={{ color: "var(--color-text-primary-raw)" }}
+        >
           {label}
         </label>
-        {error && <span className="text-xs font-medium text-red-500">{error}</span>}
+        {error && (
+          <span className="text-xs font-medium" style={{ color: "var(--color-error-raw)" }}>
+            {error}
+          </span>
+        )}
       </div>
       <textarea
         id={id}
@@ -30,7 +38,13 @@ export function JsonEditor({ label, value, onChange, error, placeholder, id }: J
         placeholder={placeholder}
         spellCheck={false}
         autoComplete="off"
-        className={`h-64 rounded-lg border-2 bg-gray-50 p-3 code-block text-sm leading-relaxed transition-all outline-none focus:ring-2 focus:ring-blue-500/50 dark:bg-gray-900 ${error ? 'border-red-300 ring-red-100' : 'border-gray-200 dark:border-gray-800'} `}
+        className="h-64 rounded-lg border-2 p-3 code-block text-sm leading-relaxed outline-none transition-all focus:ring-2"
+        style={{
+          background: "var(--color-surface-input-raw)",
+          borderColor: error ? "var(--color-error-raw)" : "var(--color-border-subtle-raw)",
+          color: "var(--color-text-primary-raw)",
+          "--tw-ring-color": "var(--color-accent-raw)",
+        } as React.CSSProperties}
       />
     </div>
   );

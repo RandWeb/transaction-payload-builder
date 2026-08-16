@@ -1,23 +1,44 @@
-﻿import { useState } from 'react';
-import { validateMapping, validateSourceTransaction } from '../utils/validation.utils';
-import { transformTransaction } from '../utils/transform.utils';
-import { type ErrorState, type TransformationResult } from '../types/transform.types';
-import { submitTransaction } from '../services/transaction.service';
+﻿import { useEffect, useState } from "react";
+import { validateMapping, validateSourceTransaction } from "../utils/validation.utils";
+import { transformTransaction } from "../utils/transform.utils";
+import { type ErrorState, type TransformationResult } from "../types/transform.types";
+import { submitTransaction } from "../services/transaction.service";
 
 /** هوک مدیریت حالت‌های برنامه */
 export function useTransactionBuilder() {
-  const [sourceJson, setSourceJson] = useState('');
-  const [mappingJson, setMappingJson] = useState('');
+  const [sourceJson, setSourceJson] = useState("");
+  const [mappingJson, setMappingJson] = useState("");
 
   const [errors, setErrors] = useState<ErrorState>({
     source: undefined,
     mapping: undefined,
   });
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/default-mapping.json")
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to load default mapping");
+        return res.json();
+      })
+      .then((data) => {
+        if (!cancelled) {
+          setMappingJson(JSON.stringify(data, null, 2));
+        }
+      })
+      .catch(() => {
+        /* ignore – user can still enter manually */
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const [result, setResult] = useState<TransformationResult | null>(null);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
-    type: 'success' | 'error';
+    type: "success" | "error";
     msg: string;
   } | null>(null);
 
@@ -46,7 +67,7 @@ export function useTransactionBuilder() {
     setSubmitStatus(null);
 
     const res = await submitTransaction(result.payload);
-    setSubmitStatus({ type: res.success ? 'success' : 'error', msg: res.message });
+    setSubmitStatus({ type: res.success ? "success" : "error", msg: res.message });
     setIsSubmitting(false);
   };
 

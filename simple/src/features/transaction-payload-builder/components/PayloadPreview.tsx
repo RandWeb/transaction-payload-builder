@@ -1,6 +1,6 @@
-﻿import { useState } from 'react';
-import { type OutputPayload } from '../types/transaction.types';
-import { formatJson } from '@/lib/json.utils';
+﻿import { useState } from "react";
+import { type OutputPayload } from "../types/transaction.types";
+import { formatJson } from "@/lib/json.utils";
 
 interface PayloadPreviewProps {
   payload: OutputPayload | null;
@@ -22,15 +22,28 @@ export function PayloadPreview({ payload }: PayloadPreviewProps) {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-bold text-gray-800 dark:text-white">خروجی نهایی (Payload)</h3>
+        <h3 className="text-lg font-bold" style={{ color: "var(--color-text-primary-raw)" }}>
+          خروجی نهایی (Payload)
+        </h3>
         <button
           onClick={handleCopy}
-          className="flex items-center gap-1 rounded bg-gray-100 px-3 py-1.5 text-xs transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
+          className="flex items-center gap-1 rounded px-3 py-1.5 text-xs transition-colors"
+          style={{
+            background: "var(--color-surface-hover-raw)",
+            color: "var(--color-text-secondary-raw)",
+          }}
         >
-          {copied ? 'کپی شد!' : 'کپی کردن JSON'}
+          {copied ? "کپی شد!" : "کپی کردن JSON"}
         </button>
       </div>
-      <pre className="h-96 overflow-auto rounded-xl border-2 border-gray-800 bg-gray-900 p-4 code-block text-xs leading-relaxed text-green-400">
+      <pre
+        className="h-96 overflow-auto rounded-xl border-2 p-4 code-block text-xs leading-relaxed"
+        style={{
+          background: "var(--color-code-bg-raw)",
+          borderColor: "var(--color-code-bg-raw)",
+          color: "var(--color-code-fg-raw)",
+        }}
+      >
         {content}
       </pre>
     </div>
